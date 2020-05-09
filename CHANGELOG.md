@@ -5,3 +5,6 @@
 
 ## v[0.1.0]
 * added example
+
+## v[0.2.0]
+* fixed image and added hr for dots

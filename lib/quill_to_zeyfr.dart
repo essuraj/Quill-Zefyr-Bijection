@@ -8,18 +8,19 @@ Delta convertIterableToDelta(Iterable list) {
       print(quillNode);
       var quillInsertNode = quillNode["insert"];
       var quillAttributesNode = quillNode["attributes"];
-      // var text = f["insert"];
       if (quillAttributesNode != null) {
         var finalZefyrAttributes = {};
         if (quillAttributesNode is Map) {
           quillAttributesNode.keys.forEach((attrKey) {
-            if (["background", "align"].contains(attrKey)) {
-              // finalNode["attributes"] = null;
+            if (["background", "align", "embed"].contains(attrKey)) {
+              // not sure how to implement
             } else {
               if (attrKey == "bold") finalZefyrAttributes["b"] = true;
               if (attrKey == "italic") finalZefyrAttributes["i"] = true;
               if (attrKey == "blockquote")
                 finalZefyrAttributes["block"] = "quote";
+              if (attrKey == "embed")
+                finalZefyrAttributes["embed"] = {"type": "hr"};
               if (attrKey == "header")
                 finalZefyrAttributes["heading"] =
                     quillAttributesNode[attrKey] ?? 1;
@@ -34,9 +35,8 @@ Delta convertIterableToDelta(Iterable list) {
       }
       if (quillInsertNode != null) {
         if (quillInsertNode is Map && quillInsertNode.containsKey("image")) {
-          // print("Image not supported");
           var finalAttributes = {
-            "embed": {"image": quillInsertNode["image"]}
+            "embed": {"type": "image", "source": quillInsertNode["image"]}
           };
           finalZefyrNode["insert"] = "";
           finalZefyrNode["attributes"] = finalAttributes;
