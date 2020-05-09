@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:quill_delta/quill_delta.dart';
 import 'package:quill_zefyr_bijection/quill_zefyr_bijection.dart';
@@ -32,7 +31,24 @@ class EditorPageState extends State<EditorPage> {
     // Note that the editor requires special `ZefyrScaffold` widget to be
     // one of its parents.
     return Scaffold(
-      appBar: AppBar(title: Text("Editor page")),
+      appBar: AppBar(
+        title: Text("Editor page"),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              var res = QuillZefyrBijection.convertDeltaIterableToQuillJSON(
+                  _controller.document.toDelta());
+              Scaffold.of(context)
+                  .showBottomSheet((context) => SingleChildScrollView(
+                          child: Text(
+                        res,
+                        style: Theme.of(context).textTheme.caption,
+                      )));
+            },
+            icon: Icon(Icons.save),
+          )
+        ],
+      ),
       body: ZefyrScaffold(
         child: ZefyrEditor(
           padding: EdgeInsets.all(16),
@@ -46,7 +62,8 @@ class EditorPageState extends State<EditorPage> {
   /// Loads the document to be edited in Zefyr.
   NotusDocument _loadDocument() {
     try {
-      Delta d = QuillZefyrBijection.convertJSONToZefyrDelta(SAMPLE);
+      Delta d =
+          QuillZefyrBijection.convertJSONToZefyrDelta(QUILL_TO_ZEFYR_SAMPLE);
       return NotusDocument.fromDelta(d);
     } catch (e) {
       print(e);

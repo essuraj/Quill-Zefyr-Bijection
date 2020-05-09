@@ -14,3 +14,6 @@
 
 ## v[0.2.2]
 * ignoring zefyr attributes
+
+## v[0.3.0]
+* added zefyr to quill transform
