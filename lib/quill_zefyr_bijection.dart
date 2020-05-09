@@ -19,7 +19,7 @@ class QuillZefyrBijection {
   }
 
   /// Returns zeyfr delta for the given valid already parsed json `[{"insert":""},"attributes":{}]`
-   static Delta convertIterableToZefyrDelta(Iterable list) {
+  static Delta convertIterableToZefyrDelta(Iterable list) {
     try {
       return convertIterableToDelta(list);
     } catch (e) {
