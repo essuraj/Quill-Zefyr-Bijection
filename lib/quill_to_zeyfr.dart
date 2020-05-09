@@ -12,21 +12,27 @@ Delta convertIterableToDelta(Iterable list) {
         var finalZefyrAttributes = {};
         if (quillAttributesNode is Map) {
           quillAttributesNode.keys.forEach((attrKey) {
-            if (["background", "align", "embed"].contains(attrKey)) {
+            if (["background", "align"].contains(attrKey)) {
               // not sure how to implement
             } else {
-              if (attrKey == "bold") finalZefyrAttributes["b"] = true;
-              if (attrKey == "italic") finalZefyrAttributes["i"] = true;
-              if (attrKey == "blockquote")
+              if (attrKey == "bold")
+                finalZefyrAttributes["b"] = true;
+              else if (attrKey == "italic")
+                finalZefyrAttributes["i"] = true;
+              else if (attrKey == "blockquote")
                 finalZefyrAttributes["block"] = "quote";
-              if (attrKey == "embed")
+              else if (attrKey == "embed" &&
+                  quillAttributesNode[attrKey]["type"] == "dots")
                 finalZefyrAttributes["embed"] = {"type": "hr"};
-              if (attrKey == "header")
+              else if (attrKey == "header")
                 finalZefyrAttributes["heading"] =
                     quillAttributesNode[attrKey] ?? 1;
-              if (attrKey == "link")
+              else if (attrKey == "link")
                 finalZefyrAttributes["a"] =
                     quillAttributesNode[attrKey] ?? "n/a";
+              else {
+                print("ignoring " + attrKey);
+              }
             }
           });
           if (finalZefyrAttributes.keys.length > 0)

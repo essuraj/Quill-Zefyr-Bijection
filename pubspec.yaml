@@ -1,6 +1,6 @@
 name: quill_zefyr_bijection
 description: Converts Quill.Js JSON to Zefyr Compatible JSON Delta fo user with Zefyr editor flutter package.
-version: 0.2.0
+version: 0.2.1
 homepage: https://github.com/essuraj/Quill-Zefyr-Bijection
 
 environment:

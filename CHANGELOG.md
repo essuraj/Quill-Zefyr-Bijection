@@ -8,3 +8,6 @@
 
 ## v[0.2.0]
 * fixed image and added hr for dots
+
+## v[0.2.1]
+* fixed error for embed
