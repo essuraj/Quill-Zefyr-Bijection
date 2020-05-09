@@ -12,7 +12,15 @@ Delta convertIterableToDelta(Iterable list) {
         var finalZefyrAttributes = {};
         if (quillAttributesNode is Map) {
           quillAttributesNode.keys.forEach((attrKey) {
-            if (["background", "align"].contains(attrKey)) {
+            if ([
+              "b",
+              "i",
+              "block",
+              "heading",
+              "a",
+            ].contains(attrKey)) {
+              finalZefyrAttributes[attrKey] = quillAttributesNode[attrKey];
+            } else if (["background", "align"].contains(attrKey)) {
               // not sure how to implement
             } else {
               if (attrKey == "bold")

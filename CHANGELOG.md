@@ -11,3 +11,6 @@
 
 ## v[0.2.1]
 * fixed error for embed
+
+## v[0.2.2]
+* ignoring zefyr attributes
