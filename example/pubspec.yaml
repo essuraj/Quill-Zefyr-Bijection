@@ -8,8 +8,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  quill_delta: ^1.0.2
-  zefyr: ^0.10.0
+  quill_delta: ^2.0.0
+  zefyr: ^1.0.0-dev.1.0
   quill_zefyr_bijection: 
     path: "../"
   cupertino_icons: ^0.1.2
