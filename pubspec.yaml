@@ -9,7 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  quill_delta: ^1.0.2
+  quill_delta: ^2.0.0
+  notus: ^1.0.0-dev.3.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
